@@ -18,6 +18,11 @@
 		bootargs = "console=ttyS0,115200";
 	};
 
+    memory@0 {
+		device_type = "memory";
+		reg = <0x0 0x8000000>;
+	};
+
     gpio_leds {
         compatible = "gpio-leds";
 
@@ -104,6 +109,29 @@
         };
     };
 
+    gpio-export {
+        compatible = "gpio-export";
+        #size-cells = <0>;
+
+        gpio_usb_power {
+            gpio-export,name = "netgear:power:usb";
+            gpio-export,output = <1>;
+ 			gpios = <&ath9k 0 GPIO_ACTIVE_LOW>;
+        };
+    };
+
+};
+
+&ref {
+	clock-frequency = <40000000>;
+};
+
+&uart {
+	status = "okay";
+};
+
+&gpio {
+	status = "okay";
 };
 
 &mdio0 {
