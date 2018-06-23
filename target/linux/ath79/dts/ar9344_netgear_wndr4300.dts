@@ -109,11 +109,11 @@
         compatible = "gpio-export";
         #size-cells = <0>;
 
-        gpio_usb_power {
+        /* gpio_usb_power {
             gpio-export,name = "netgear:power:usb";
             gpio-export,output = <1>;
  			gpios = <&ath9k 0 GPIO_ACTIVE_LOW>;
-        };
+        }; */
     };
 
 };
@@ -126,8 +126,12 @@
 	status = "okay";
 };
 
-&gpio {
-	status = "okay";
+&usb {
+    status = "okay";
+};
+
+&usb_phy {
+    status = "okay";
 };
 
 &mdio0 {
