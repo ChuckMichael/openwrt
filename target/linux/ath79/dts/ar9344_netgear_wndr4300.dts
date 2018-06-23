@@ -134,6 +134,13 @@
     status = "okay";
 };
 
+&eth0 {
+    status = "okay";
+
+    phy-mode = "rgmii";
+	phy-handle = <&phy0>;
+};
+
 &mdio0 {
 	status = "okay";
 
