@@ -68,12 +68,14 @@
             label = "netgear:green:wlan2g";
             gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
             default_state = "off";
+            linux,default-trigger = "phy0tpt";
         };
 
         wlan_5g {
             label = "netgear:blue:wlan5g";
             gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
             default_state = "off";
+            linux,default-trigger = "phy1tpt";
         };
 
     };
@@ -136,19 +138,22 @@
 
 &eth0 {
     status = "okay";
-
     phy-mode = "rgmii";
 	phy-handle = <&phy0>;
+};
+
+&eth1 {
+    status = "okay";
+    phy-mode = "rgmii";
+    phy-handle = <&phy4>;
 };
 
 &mdio0 {
 	status = "okay";
 
-	phy-mask = <0>;
-
 	phy0: ethernet-phy@0 {
 		reg = <0>;
-		phy-mode = "rgmii";
+        phy-mask = <0>;
 
 		qca,ar8327-initvals = <
 			0x04 0x07600000 /* PORT0 PAD MODE CTRL */
@@ -160,6 +165,11 @@
 			0x7c 0x0000007e /* PORT0_STATUS */
 			>;
 	};
+
+    phy4: ethernet-phy@4 {
+        reg = <4>;
+        phy-mask = <4>;
+    };
 };
 
 &pcie {
