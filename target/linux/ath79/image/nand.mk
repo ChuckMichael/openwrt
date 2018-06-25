@@ -28,8 +28,8 @@ define Device/netgear_wndr4300
   BLOCKSIZE := 128k
   PAGESIZE := 2048
   VID_HDR_OFFSET := 512
-  IMAGES := factory.ubi sysupgrade.tar
-  IMAGE/sysupgrade.tar := sysupgrade-tar
-  IMAGE/factory.ubi := append-kernel | pad-to $$$$(KERNEL_SIZE) | append-ubi | netgear-dni
+  #IMAGES := factory.ubi sysupgrade.tar
+  #IMAGE/sysupgrade.tar := sysupgrade-tar
+  #IMAGE/factory.ubi := append-kernel | pad-to $$$$(KERNEL_SIZE) | append-ubi | netgear-dni
 endef
 TARGET_DEVICES += netgear_wndr4300
